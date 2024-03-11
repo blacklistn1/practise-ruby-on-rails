@@ -1,2 +1,21 @@
 <h1><%= @article.title %></h1>
+<%= link_to 'Articles', articles_path %>
 <p><%= @article.body %></p>
+
+<div>
+  <%= link_to 'Edit this article', edit_article_path %>
+</div>
+<div style="margin-top: 15px;">
+  <%= link_to "Destroy", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %>
+</div>
+
+<h2>Comments</h2>
+
+<%= render @article.comments %>
+
+<h2>Add a comment</h2>
+
+<%= render 'comments/form' %>
