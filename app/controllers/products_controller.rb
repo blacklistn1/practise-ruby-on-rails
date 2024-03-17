@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    render json: @products
   end
 
   def create
@@ -12,9 +11,18 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    render json: @product
   end
 
   def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+
+    render :index, status: :see_other
   end
 end
