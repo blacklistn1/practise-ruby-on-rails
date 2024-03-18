@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'products#index'
+  get 'login' => 'auth#login'
+  get 'register' => 'auth#register'
+
+  root 'products#index', as: :homepage
   resources 'products'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

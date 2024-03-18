@@ -7,10 +7,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "turbo", type: "module" %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="bg-gray-100">
+      <div class="w-3/4 mx-auto">
+        <%= render 'partials/header' %>
+      </div>
+    </div>
+    <div class="w-3/4 mx-auto py-4">
+      <%= yield %>
+    </div>
   </body>
 </html>
