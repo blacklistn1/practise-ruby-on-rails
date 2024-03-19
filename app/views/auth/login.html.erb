@@ -1,18 +1,55 @@
-<div>
-  <%= form_with url: '/', method: :post, class: %w[w-5/12 mx-auto] do |form| %>
+<div class="flex flex-col gap-5 w-1/2 p-6 mx-auto shadow-lg border-b border-r border-l border-gray-200 rounded-xl">
+  <div class="flex justify-center">
+    <h1 class="text-3xl font-bold uppercase">Login</h1>
+  </div>
+  <%=
+    form_with(
+      model: @user,
+      url: login_path,
+      method: :post,
+      class: %w[
+        flex
+        flex-col
+        gap-3
+      ]
+    ) do |form|
+  %>
     <div class="flex justify-between items-center">
       <%= form.label :email, 'Email:', class: %w[w-1/6] %>
       <%= form.text_field :email, placeholder: 'Email...', class: %w[w-2/3] %>
     </div>
     <div class="flex justify-between items-center">
       <%= form.label :password, 'Password:', class: %w[w-1/6] %>
-      <%= form.password_field :password, class: %w[w-2/3] %>
+      <%= form.password_field :password, placeholder: 'Password...', class: %w[w-2/3] %>
     </div>
     <div class="flex justify-between">
       <div class="w-1/6"></div>
       <div class="w-2/3">
-        <%= form.submit class: %w[bg-gray-300 rounded-lg p-3] %>
+        <%=
+          form.submit(
+            'Login',
+            class: %w[
+              transition-colors
+              duration-100
+              bg-gray-200
+              rounded-lg
+              p-3
+              hover:bg-gray-300
+              active:bg-gray-400
+              cursor-pointer
+            ]
+          )
+        %>
       </div>
     </div>
+
+    <% if @user.errors.any? %>
+      <div class="bg-red-200 rounded-lg p-4">
+      <% @user.errors.each do |msg| %>
+        <p><%= msg.full_message %></p>
+      <% end %>
+      </div>
+    <% end %>
+
   <% end %>
 </div>

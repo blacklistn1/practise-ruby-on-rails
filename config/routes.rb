@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'login' => 'auth#login'
+  post 'login' => 'auth#post_login'
   get 'register' => 'auth#register'
 
   root 'products#index', as: :homepage
