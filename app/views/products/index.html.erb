@@ -1,7 +1,57 @@
-<h1 class="title is-2">Products</h1>
-
-<ul>
+<div class="flex flex-wrap justify-between gap-y-5">
   <% @products.each do |product| %>
-    <li><%= product.name %>. Stock: <%= product.stock %>, Price: <%= product.price %></li>
+    <div class="w-[22%] flex flex-col items-center p-3 shadow-lg border-r border-b border-gray-200 rounded-xl hover:shadow-xl">
+      <a href="<%= product_path(product) %>">
+        <img src="<%= product.image %>" alt="<%= product.name %>">
+      </a>
+      <h3 class="text-2xl">
+        <a href="<%= product_path(product) %>">
+          <%= product.name %>
+        </a>
+      </h3>
+      <p class="text-xl font-bold">Price: <%= product.price %></p>
+
+      <div class="w-full flex justify-between">
+        <%=
+          link_to(
+            'View detail',
+            product_path(product),
+            class: %w[
+              bg-blue-600
+              text-white
+              text-sm
+              p-2
+              rounded-xl
+              transition-colors
+              duration-100
+              hover:bg-blue-700
+              active:bg-blue-800
+            ]
+          )
+        %>
+        <%=
+          link_to(
+            'Add to cart',
+            homepage_path,
+            class: %w[
+              p-2
+              text-sm
+              rounded-xl
+              bg-gray-200
+              transition-colors
+              duration-100
+              hover:bg-gray-300
+              active:bg-gray-400
+            ]
+          )
+        %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+
+<div class="flex justify-center">
+  <div class="w-1/4 py-2 px-4">
+<!--    pages-->
+  </div>
+</div>
